@@ -1,5 +1,18 @@
+<!-- gradients -->
+<div
+  aria-hidden="true"
+  class="flex absolute -top-96 left-1/2 transform -translate-x-1/2"
+>
+  <div
+    class="bg-gradient-to-r from-violet-300/50 to-purple-100 blur-3xl w-[25rem] h-[44rem] rotate-[-60deg] transform -translate-x-[10rem] dark:from-violet-900/50 dark:to-purple-900"
+  ></div>
+  <div
+    class="bg-gradient-to-tl from-blue-50 via-blue-100 to-blue-50 blur-3xl w-[90rem] h-[50rem] rounded-fulls origin-top-left -rotate-12 -translate-x-[15rem] dark:from-indigo-900/70 dark:via-indigo-900/70 dark:to-blue-900/70"
+  ></div>
+</div>
+
 <div class="container m-auto p-6">
-  <!-- TODO: add nice image here beneath this content -->
+  <!-- hero section -->
   <div class="relative lg:flex lg:items-center">
     <div
       class="text-center lg:text-left md:mt-12 lg:mt-0 sm:w-10/12 md:w-2/3 sm:mx-auto lg:mr-auto lg:w-6/12"
@@ -13,9 +26,9 @@
       <p class="mt-8 text-gray-600 dark:text-gray-300">
         If you say holiday, you say sun ☀️, beach 🏖️ and cocktails 🍸. Even if
         you aren't on holiday ✈️ yet, it's good to learn some new cocktails.
-        There are a lots, so let's find you the one you like ❤️! If you don't
-        want alcohol, no problem you can find a lot of non alcohol cocktails
-        here too!
+        There are lots, so let's find you the one you like ❤️! If you don't want
+        alcohol, no problem you can find a lot of non alcohol cocktails here
+        too!
       </p>
       <div></div>
       <div
@@ -28,6 +41,46 @@
           <span class="block text-white font-semibold">View all cocktails</span>
         </a>
       </div>
+    </div>
+  </div>
+
+  <!-- discover cocktails -->
+  <div class="mt-40">
+    <!-- Title -->
+    <div class="max-w-4xl text-center mx-auto mb-10">
+      <h2
+        class="text-4xl font-bold md:text-4xl md:leading-tight dark:text-white"
+      >
+        Discover cocktails
+      </h2>
+    </div>
+    <!-- End Title -->
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
+      <!-- Card -->
+      <a
+        class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+        href="#"
+      >
+        <div class="aspect-w-16 aspect-h-9">
+          <img
+            class="w-full object-cover rounded-t-xl"
+            src="https://images.unsplash.com/photo-1668869713519-9bcbb0da7171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80"
+            alt="Image Description"
+          />
+        </div>
+        <div class="p-4 md:p-5">
+          <p class="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+            Product
+          </p>
+          <h3
+            class="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white"
+          >
+            Better is when everything works together
+          </h3>
+        </div>
+      </a>
+      <!-- End Card -->
     </div>
   </div>
 </div>

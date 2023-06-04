@@ -12,5 +12,6 @@
         "**/Thumbs.db": true,
         "node_modules":true,
         ".angular":true,
-    }
+    },
+    "breadcrumbs.symbolPath": "off"
 }
