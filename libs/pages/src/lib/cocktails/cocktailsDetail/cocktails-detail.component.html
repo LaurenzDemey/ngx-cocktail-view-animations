@@ -1,1 +1,118 @@
-<p>cocktails-detail works!</p>
+<div
+  class="m-8 grid h-full sm:grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 md:gap-8"
+>
+  <div>
+    <img
+      vwtTransitionName="cocktail-img"
+      class="w-full h-full object-cover rounded-t-xl"
+      src="{{ detail.strDrinkThumb | cleanUrl }}"
+      [alt]="detail.strDrink"
+    />
+  </div>
+  <div>
+    <!-- Title -->
+    <h2
+      class="text-4xl font-bold md:text-4xl md:leading-tight dark:text-white"
+      vwtTransitionName="cocktail-name"
+    >
+      {{ detail.strDrink }}
+    </h2>
+
+    <!-- tags -->
+    <div class="tags flex flex-wrap gap-2" vwtTransitionName="cocktail-tags">
+      <span
+        *ngIf="detail.strCategory"
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+        >{{ detail.strCategory }}</span
+      >
+      <span
+        *ngIf="detail.strIBA"
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+        >{{ detail.strIBA }}</span
+      >
+      <span
+        *ngIf="detail.strAlcoholic"
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+        >{{ detail.strAlcoholic }}</span
+      >
+      <span
+        *ngIf="detail.strGlass"
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+        >{{ detail.strGlass }}</span
+      >
+    </div>
+
+    <!-- Ingredients -->
+    <div class="mt-6">
+      <h3 class="text-lg font-semibold text-gray-900">Ingredients</h3>
+      <ul class="max-w-md space-y-1 text-gray-500 list-disc list-inside">
+        <li *ngIf="detail.strIngredient1">
+          {{ detail.strIngredient1 }}
+          <span *ngIf="detail.strMeasure1">({{ detail.strMeasure1 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient2">
+          {{ detail.strIngredient2 }}
+          <span *ngIf="detail.strMeasure2">({{ detail.strMeasure2 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient3">
+          {{ detail.strIngredient3 }}
+          <span *ngIf="detail.strMeasure3">({{ detail.strMeasure3 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient4">
+          {{ detail.strIngredient4 }}
+          <span *ngIf="detail.strMeasure4">({{ detail.strMeasure4 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient5">
+          {{ detail.strIngredient5 }}
+          <span *ngIf="detail.strMeasure5">({{ detail.strMeasure5 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient6">
+          {{ detail.strIngredient6 }}
+          <span *ngIf="detail.strMeasure6">({{ detail.strMeasure6 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient7">
+          {{ detail.strIngredient7 }}
+          <span *ngIf="detail.strMeasure7">({{ detail.strMeasure7 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient8">
+          {{ detail.strIngredient8 }}
+          <span *ngIf="detail.strMeasure8">({{ detail.strMeasure8 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient9">
+          {{ detail.strIngredient9 }}
+          <span *ngIf="detail.strMeasure9">({{ detail.strMeasure9 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient10">
+          {{ detail.strIngredient10 }}
+          <span> *ngIf="detail.strMeasure10"({{ detail.strMeasure10 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient11">
+          {{ detail.strIngredient11 }}
+          <span> *ngIf="detail.strMeasure11"({{ detail.strMeasure11 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient12">
+          {{ detail.strIngredient12 }}
+          <span> *ngIf="detail.strMeasure12"({{ detail.strMeasure12 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient13">
+          {{ detail.strIngredient13 }}
+          <span> *ngIf="detail.strMeasure13"({{ detail.strMeasure13 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient14">
+          {{ detail.strIngredient14 }}
+          <span> *ngIf="detail.strMeasure14"({{ detail.strMeasure14 }})</span>
+        </li>
+        <li *ngIf="detail.strIngredient15">
+          {{ detail.strIngredient15 }}
+          <span> *ngIf="detail.strMeasure15"({{ detail.strMeasure15 }})</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Instructions -->
+    <div class="mt-6">
+      <h3 class="text-lg font-semibold text-gray-900">Instructions</h3>
+      <div class="whitespace-pre">{{ detail.strInstructions }}</div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,11 @@
-import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CocktailsResponse } from './dto/cocktails-response.dto';
-import { CocktailsFilteredListResponse } from './dto/cocktails-filtered-list-response.dto';
-import { IngredientsResponse } from './dto/ingredients-response.dto';
+import { Injectable, inject } from '@angular/core';
+import {
+  CocktailsFilteredListResponse,
+  CocktailsResponse,
+  IngredientsResponse,
+} from './dto';
+import { map } from 'rxjs';
 
 type Alphabeth =
   | 'a'
@@ -37,7 +40,7 @@ export class CocktailApiService {
   private readonly httpClient = inject(HttpClient);
 
   // TODO: use the license + make configurable
-  private readonly baseUrl = 'www.thecocktaildb.com/api/json/v1/1/';
+  private readonly baseUrl = 'https://www.thecocktaildb.com/api/json/v1/1/';
 
   // Cocktails
   searchCocktailsByName(name: string) {
@@ -53,13 +56,15 @@ export class CocktailApiService {
   }
 
   getCocktailDetail(id: number) {
-    return this.httpClient.get<CocktailsResponse>(
-      `${this.baseUrl}lookup.php?i=${id}`
-    );
+    return this.httpClient
+      .get<CocktailsResponse>(`${this.baseUrl}lookup.php?i=${id}`)
+      .pipe(map((response) => response.drinks[0]));
   }
 
   getRandomCocktail() {
-    return this.httpClient.get<CocktailsResponse>(`${this.baseUrl}random.php`);
+    return this.httpClient
+      .get<CocktailsResponse>(`${this.baseUrl}random.php`)
+      .pipe(map((response) => response.drinks[0]));
   }
 
   getCocktailsByIngredient(ingredientName: string) {

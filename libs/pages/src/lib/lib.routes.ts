@@ -1,4 +1,6 @@
-import { Route } from '@angular/router';
+import { inject } from '@angular/core';
+import { ActivatedRouteSnapshot, Route } from '@angular/router';
+import { CocktailApiService } from '@ngx-cocktail-view-animations/cocktail-api';
 
 export const pagesRoutes: Route[] = [
   {
@@ -17,6 +19,10 @@ export const pagesRoutes: Route[] = [
       {
         path: ':id',
         pathMatch: 'full',
+        resolve: {
+          detail: (snapshot: ActivatedRouteSnapshot) =>
+            inject(CocktailApiService).getCocktailDetail(snapshot.params['id']),
+        },
         loadComponent: () =>
           import('./cocktails/cocktailsDetail/cocktails-detail.component'),
       },

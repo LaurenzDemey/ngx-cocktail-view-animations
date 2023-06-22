@@ -1,1 +1,92 @@
-<p>about works!</p>
+<div class="container m-auto">
+  <h2 class="text-4xl font-bold md:leading-tight dark:text-white">About</h2>
+  <h3
+    class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
+  >
+    General
+  </h3>
+  <p>
+    This application is for testing view transition api on a "real life"
+    application. <b>This will not be maintained!</b>
+  </p>
+  <p>
+    I created this application to see/fix the bottlenecks, but also to see how
+    easy I could make it by hiding away functionality using directives and a
+    custom router outlet. There are not a lot of examples available for Angular,
+    so I saw this as a challenge! while doing so I also looked into TailwindCSS,
+    the new setup of Angular (standalone, inject DI)
+  </p>
+  <p class="mt-2">
+    Topics:
+    <span class="inline-flex flex-wrap gap-2">
+      <span
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+      >
+        View transition api
+      </span>
+      <span
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+      >
+        TailwindCSS
+      </span>
+      <span
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+      >
+        standalone components/directives (angular)
+      </span>
+      <span
+        class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300"
+      >
+        inject using properties instead of ctor (angular)
+      </span>
+    </span>
+  </p>
+  <h3
+    class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
+  >
+    Challenge 1: hook into view transition api
+  </h3>
+  <p>
+    I didn't find any hooks hooks on the router to execute logic. I would have
+    thought that the router module provided some strategy that I could
+    implement, but this was not the case. I was thinking to create my own router
+    logic, while I stumbled upon the idea that you can
+    <b>create your own router outlet</b> directive. By doing so, I could add the
+    behavior that I wanted. The only downside is that this only goes 1 level
+    deep. A strategy on router configuration level would be better as there
+    would be 1 orchestrator. However currently each router-outlet handles their
+    own component and passes information down.
+  </p>
+  <p>
+    <b>Note: </b>Nested router-outlets are in this demo not supported, as the
+    animation is marked as complete as 1 router outlet is finished.
+  </p>
+
+  <h3
+    class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
+  >
+    Challenge 2: Duplicate view transition name inside lists/overviews
+  </h3>
+  <p>
+    If you have a list of items and you want to animate is separately. for
+    example: the list of cocktails has each their own name and picture. Those
+    are 2 different names as you want to animate it in a different way. However
+    if you add a view transition name on each item with the same name then
+    nothing will work as this needs to be unique. Adding a unique view
+    transition name (for eaxmple by using the id) is also possible but then your
+    detail page needs to be adapted to this as well. Online solution for
+    different technologies did it mostly manually by writing custom javascript
+    on click. while this gives flexibility, it doesn't scale well and is not
+    usable if you use routerLink inside Angular. I could have created my own
+    routerLink directive that would do the same thing, but I went another way by
+    using another directive (vwtRepeatedTransitionContainer).
+    <b
+      >With this container the view transition is only applied on the elements
+      where the navigation is being triggered.</b
+    >
+    In the custom router outlet we will look for this container and look at the
+    inside to check all routerLinks to see which routes are possible. only the
+    routerlink where you navigate to will be "activated" with the view
+    transition name.
+  </p>
+</div>
