@@ -1,4 +1,4 @@
-<div class="container m-auto">
+<div class="container m-auto mb-32">
   <h2 class="text-4xl font-bold md:leading-tight dark:text-white">About</h2>
   <h3
     class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
@@ -41,16 +41,20 @@
       </span>
     </span>
   </p>
+
   <h3
     class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
   >
-    Challenge 1: hook into view transition api
+    Challenges view transition
   </h3>
+  <h4 class="mt-8 text-2xl md:leading-tight dark:text-white text-slate-600">
+    Challenge 1: hook into view transition api
+  </h4>
   <p>
-    I didn't find any hooks hooks on the router to execute logic. I would have
-    thought that the router module provided some strategy that I could
-    implement, but this was not the case. I was thinking to create my own router
-    logic, while I stumbled upon the idea that you can
+    I didn't find any hooks on the router to execute logic. I would have thought
+    that the router module provided some strategy that I could implement, but
+    this was not the case. I was thinking to create my own router logic, while I
+    stumbled upon the idea that you can
     <b>create your own router outlet</b> directive. By doing so, I could add the
     behavior that I wanted. The only downside is that this only goes 1 level
     deep. A strategy on router configuration level would be better as there
@@ -62,11 +66,9 @@
     animation is marked as complete as 1 router outlet is finished.
   </p>
 
-  <h3
-    class="mt-8 text-2xl font-bold md:leading-tight dark:text-white text-slate-600"
-  >
+  <h4 class="mt-8 text-2xl md:leading-tight dark:text-white text-slate-600">
     Challenge 2: Duplicate view transition name inside lists/overviews
-  </h3>
+  </h4>
   <p>
     If you have a list of items and you want to animate is separately. for
     example: the list of cocktails has each their own name and picture. Those
@@ -88,5 +90,61 @@
     inside to check all routerLinks to see which routes are possible. only the
     routerlink where you navigate to will be "activated" with the view
     transition name.
+  </p>
+
+  <h4 class="mt-8 text-2xl md:leading-tight dark:text-white text-slate-600">
+    Challenge 3: direction of navigation
+  </h4>
+  <p>
+    While it is possible to change the animation depending the direction of the
+    navigation (for example: go back), because we configure it only using css.
+    The problem lies that the routerLinkDirective always sees this as a new
+    route navigation event. for example going from a detail to an overview page
+    using "routerlink=".."" will be marked as a new navigation going forward,
+    instead of backwards. I didn't focus on this here, as it would lead me to
+    far into what is possible. The next challenge had also to do with
+    navigation.
+  </p>
+
+  <h4 class="mt-8 text-2xl md:leading-tight dark:text-white text-slate-600">
+    Challenge 4: navigation & restore scroll position
+  </h4>
+  <p>
+    if you were scrolling on a large overview page and clicking on a detail, you
+    navigate to that detail with the right animation. However if you go back,
+    the scroll position was not restored, thus the animation was also no so nice
+    looking. I investigated and saw that there is a scroll restoration option to
+    work on going back a page, but this only works when using the browsers back
+    buttons. This is the same (strange) behavior like in the previous challenge.
+  </p>
+
+  <h4 class="mt-8 text-2xl md:leading-tight dark:text-white text-slate-600">
+    Challenge 5: async data
+  </h4>
+  <p>
+    A lot of times i've used *ngIf="someObs$ |async as someObs" syntax to
+    subscribe to data to visualize. The problem only lies in the fact that my
+    router outlet needed to know when the transition could be done.
+  </p>
+  <p>
+    I have found a <b>"ChangeDetectionCoordinator" class</b> that uses the
+    macrotask "setTimeOut" and a "tick" for the whole application to "wait" if
+    everything is being rendered. This means that it just renders the new
+    component and after that it will start the animation. calling an endpoint
+    seems to happen to late. Even worse, because I used the ngIf as syntax,
+    there was no DOM element, so also no element with such a view transition
+    name, meaning there was no animation for this element.
+  </p>
+  <p>
+    A possible solution I've used was to use the
+    <b>"resolve" on the route</b> to wait until this data is available. However
+    I'm currently not pleased with this, as this blocks the whole rendering,
+    without showing something to the user.
+  </p>
+  <p>
+    Another option would be to use a new directive <b>*ngLet with as syntax</b>,
+    so that there would be a DOM element with that name. NgLet doesn't exists,
+    but is easily created. Downside of this means a lot more null checks. An
+    enhancement to previous option is to look at skeleton loading with it.
   </p>
 </div>
