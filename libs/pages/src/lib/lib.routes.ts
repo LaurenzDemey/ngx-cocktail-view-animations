@@ -6,6 +6,7 @@ export const pagesRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
+    title: 'Home',
     loadComponent: () => import('./home/home.component'),
   },
   {
@@ -14,11 +15,13 @@ export const pagesRoutes: Route[] = [
       {
         path: '',
         pathMatch: 'full',
+        title: 'Cocktails',
         loadComponent: () => import('./cocktails/cocktails.component'),
       },
       {
         path: ':id',
         pathMatch: 'full',
+        title: 'Cocktail detail',
         resolve: {
           detail: (snapshot: ActivatedRouteSnapshot) =>
             inject(CocktailApiService).getCocktailDetail(snapshot.params['id']),
@@ -31,6 +34,7 @@ export const pagesRoutes: Route[] = [
   {
     path: 'about',
     pathMatch: 'full',
+    title: 'About',
     loadComponent: () => import('./about/about.component'),
   },
 ];
