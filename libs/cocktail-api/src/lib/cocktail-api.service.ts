@@ -6,34 +6,7 @@ import {
   IngredientsResponse,
 } from './dto';
 import { map } from 'rxjs';
-
-type Alphabeth =
-  | 'a'
-  | 'b'
-  | 'c'
-  | 'd'
-  | 'e'
-  | 'f'
-  | 'g'
-  | 'h'
-  | 'i'
-  | 'j'
-  | 'k'
-  | 'l'
-  | 'm'
-  | 'n'
-  | 'o'
-  | 'p'
-  | 'q'
-  | 'r'
-  | 's'
-  | 't'
-  | 'u'
-  | 'v'
-  | 'w'
-  | 'x'
-  | 'y'
-  | 'z';
+import { Alphabeth } from './dto/alphabeth';
 
 @Injectable({ providedIn: 'root' })
 export class CocktailApiService {
@@ -50,9 +23,9 @@ export class CocktailApiService {
   }
 
   listCocktailsByFirstLetter(firstLetter: Alphabeth) {
-    return this.httpClient.get<CocktailsResponse>(
-      `${this.baseUrl}search.php?f=${firstLetter}`
-    );
+    return this.httpClient
+      .get<CocktailsResponse>(`${this.baseUrl}search.php?f=${firstLetter}`)
+      .pipe(map((response) => response.drinks));
   }
 
   getCocktailDetail(id: number) {

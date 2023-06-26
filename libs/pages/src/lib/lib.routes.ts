@@ -7,6 +7,12 @@ export const pagesRoutes: Route[] = [
     path: '',
     pathMatch: 'full',
     title: 'Home',
+    resolve: {
+      cocktail1: () => inject(CocktailApiService).getRandomCocktail(),
+      cocktail2: () => inject(CocktailApiService).getRandomCocktail(),
+      cocktail3: () => inject(CocktailApiService).getRandomCocktail(),
+      cocktail4: () => inject(CocktailApiService).getRandomCocktail(),
+    },
     loadComponent: () => import('./home/home.component'),
   },
   {
@@ -16,6 +22,12 @@ export const pagesRoutes: Route[] = [
         path: '',
         pathMatch: 'full',
         title: 'Cocktails',
+        resolve: {
+          items: (snapshot: ActivatedRouteSnapshot) =>
+            inject(CocktailApiService).listCocktailsByFirstLetter(
+              snapshot.queryParams['letter'] || 'A'
+            ),
+        },
         loadComponent: () => import('./cocktails/cocktails.component'),
       },
       {

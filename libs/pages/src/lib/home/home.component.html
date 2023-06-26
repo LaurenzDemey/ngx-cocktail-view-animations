@@ -57,12 +57,14 @@
     <!-- End Title -->
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
-      <!-- <ng-container *ngFor="let number of [1, 2, 3, 4]"> -->
-      <ng-container>
+      <ng-container *ngFor="let randomCocktail of randomCocktails">
         <a
           class="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
-          *ngIf="randomCocktail$ | async as randomCocktail"
           [routerLink]="['cocktails', randomCocktail.idDrink]"
+          [vwtRepeatedTransitionContainer]="[
+            'cocktails',
+            randomCocktail.idDrink
+          ]"
         >
           <div class="aspect-w-16 aspect-h-9">
             <img

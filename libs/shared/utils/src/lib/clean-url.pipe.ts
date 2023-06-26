@@ -7,7 +7,6 @@ export class CleanUrlPipe implements PipeTransform {
       return '';
     }
     const result = value.trim().replaceAll('\\', '');
-    console.log('result: ', result);
     return result;
   }
 }
