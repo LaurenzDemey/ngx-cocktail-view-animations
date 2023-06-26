@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve ngx-cocktail-view-animations",
-    "build":"nx run-many --target build --parallel"
+    "build": "nx run-many --target build --parallel",    
+    "deploy":"nx deploy ngx-cocktail-view-animations --base-href=\"https://laurenzdemey.github.io/ngx-cocktail-view-animations/\""
   },
   "private": true,
   "dependencies": {
@@ -20,15 +21,17 @@
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
-  },
+  },  
   "devDependencies": {
+    "@angular-devkit/architect":"0.1601.1",
     "@angular-devkit/build-angular": "16.1.1",
     "@angular-devkit/core": "16.1.1",
     "@angular-devkit/schematics": "16.1.1",
+    
     "@angular-eslint/eslint-plugin": "~16.0.0",
     "@angular-eslint/eslint-plugin-template": "~16.0.0",
     "@angular-eslint/template-parser": "~16.0.0",
-    "@angular/cli": "~16.0.0",
+    "@angular/cli": "~16.0.0",    
     "@angular/compiler-cli": "16.1.2",
     "@angular/language-service": "16.1.2",
     "@nx/cypress": "16.4.0",
@@ -43,6 +46,7 @@
     "@types/node": "18.7.1",
     "@typescript-eslint/eslint-plugin": "^5.58.0",
     "@typescript-eslint/parser": "^5.58.0",
+    "angular-cli-ghpages": "^1.0.6",
     "autoprefixer": "^10.4.0",
     "cypress": "^12.11.0",
     "eslint": "~8.15.0",
@@ -61,4 +65,3 @@
     "typescript": "5.1.3"
   }
 }
-
