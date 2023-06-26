@@ -36,6 +36,7 @@ import {
     LetDirective,
   ],
   templateUrl: './cocktails.component.html',
+  styleUrls: ['./cocktails.component.scss'],
 })
 export default class CocktailsComponent {
   readonly initiallyActivatedRoute = inject(ActivatedRoute).snapshot;
@@ -58,4 +59,8 @@ export default class CocktailsComponent {
     ),
     startWith(this.initiallyActivatedRoute.data['items'])
   );
+
+  chooseLetter(letter: Alphabeth) {
+    this.letter$.next(letter);
+  }
 }
