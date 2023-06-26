@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve ngx-cocktail-view-animations"
+    "start": "nx serve ngx-cocktail-view-animations",
+    "build":"nx run-many --target build --parallel"
   },
   "private": true,
   "dependencies": {
